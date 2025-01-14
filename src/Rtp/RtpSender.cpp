@@ -58,6 +58,7 @@ void RtpSender::startSend(const MediaSourceEvent::SendRtpArgs &args, const funct
             // Specify the port
             if (!tcp_listener->listen(args.src_port)) {
                 throw std::invalid_argument(StrPrinter << "open tcp passive server failed on port: " << args.src_port << ", err: " << get_uv_errmsg(true));
+                ErrorL << "open tcp passive server failed on port: " << args.src_port << ", err: " << get_uv_errmsg(true);
             }
         } else {
             auto pr = std::make_pair(tcp_listener, Socket::createSocket(_poller, false));
@@ -95,6 +96,7 @@ void RtpSender::startSend(const MediaSourceEvent::SendRtpArgs &args, const funct
             // Specify the port
             if (!_socket_rtp->bindUdpSock(args.src_port, "::", true)) {
                 throw std::invalid_argument(StrPrinter << "open udp passive server failed on port: " << args.src_port << ", err: " << get_uv_errmsg(true));
+                ErrorL << "open udp passive server failed on port: " << args.src_port << ", err: " << get_uv_errmsg(true);
             }
         } else {
             auto pr = std::make_pair(_socket_rtp, Socket::createSocket(_poller, false));
