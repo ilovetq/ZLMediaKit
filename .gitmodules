@@ -10,3 +10,5 @@
 [submodule "www/webassist"]
 	path = www/webassist
 	url = https://gitee.com/victor1002/zlm_webassist
+[submodule "3rdpart/ZLToolKit"]
+	url = git@github.com:ilovetq/ZLToolKit.git
